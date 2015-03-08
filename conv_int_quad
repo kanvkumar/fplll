@@ -1,0 +1,17 @@
+//function for initializer
+static inline void initTemp() 
+{
+    if (!tempInitialized) 
+    {
+      mpfr_init2(temp, numeric_limits<long double>::digits);
+      tempInitialized = true;
+    }
+ }
+
+//function to convert op to  long double(quadruple) precision
+static long double mpz_get_ld(const mpz_t op) 
+{
+    initTemp();
+    mpfr_set_z(temp, op, GMP_RNDN);
+    return mpfr_get_ld(temp, GMP_RNDN); 
+}
