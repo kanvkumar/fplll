@@ -1,0 +1,12 @@
+//mpz_t is a GMP integer
+//qd_real is a quadruple integer
+void func(const mpz_t a)
+{
+     unsigned int old_cw;
+     fpu_fix_start(&old_cw);
+     cout.precision(60);
+     qd_real x;
+     x=(qd_real)a;
+     cout<<x<<endl;
+     fpu_fix_end(&old_cw);
+}
